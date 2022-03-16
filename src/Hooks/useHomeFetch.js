@@ -16,7 +16,6 @@ export function useHomeFetch() {
   const [error, setError] = useState(false);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  console.log(searchTerm);
 
   // Fetching from Database
   const fetchMovies = async (page, searchTerm = "") => {
