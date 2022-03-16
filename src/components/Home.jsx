@@ -8,6 +8,7 @@ import Grid from './Grid/Grid';
 import { Spinner } from './Spinner/Spinner.css';
 import SearchBar from './SearchBar/SearchBar';
 import Button from './Button/Button';
+import Footer from './Footer/Footer';
 
 // Hook
 import { useHomeFetch } from '../Hooks/useHomeFetch';
@@ -29,13 +30,14 @@ const Home = () => {
 
         <Grid header={searchTerm ? "Search Result:" : "Popular Movies"}>
           {state.results.map(movie => (
-            <Thumb key={movie.id} image={`${movie.poster_path ? IMAGE_BASE_URL+ POSTER_SIZE + movie.poster_path : NoImage}`} movieId={movie.id} />
+            <Thumb key={movie.id} clickable image={`${movie.poster_path ? IMAGE_BASE_URL+ POSTER_SIZE + movie.poster_path : NoImage}`} movieId={movie.id} />
           ))}
         </Grid>
         {loading && <Spinner/>}
         {state.page < state.total_pages && !loading && (
           <Button text="Load More" callback={() => setIsLoadingMore(true)}/>
         )}
+        <Footer />
 
     </>
   )
