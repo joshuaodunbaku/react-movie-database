@@ -13,7 +13,7 @@ function App() {
         <div className= "App">
             <Header />
             <Routes>
-                <Route path="/*" element={<NotFound />} />
+                <Route path="/*" element={<Navigate to="/"/>} />
                 <Route path="/" element={<Home />} />
                 <Route path="/:movieId" element={<Movie />} />               
             </Routes>

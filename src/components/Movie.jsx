@@ -1,5 +1,6 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+// import PropTypes from "prop-types";
 // Config 
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../config';
 // Components
@@ -19,8 +20,15 @@ const Movie = () => {
   const {movieId} = useParams();
   const {state: movie, loading, error} = useMovieFetch(movieId);
 
-  if (loading) return <Spinner />
-  if (error) return <div>Something went Wrong</div>;
+  if (loading) return <Spinner />;
+  if (error) {
+    return (
+      <>
+        <div>Something went Wrong <Link to="/">Home</Link></div>
+        <Footer />
+      </>
+    )
+  } ;
   
   return (
     <>
@@ -41,5 +49,9 @@ const Movie = () => {
     </>
   )
 }
+
+// Movie.prototype = {
+//   movieId: PropTypes.number,
+// }
 
 export default Movie

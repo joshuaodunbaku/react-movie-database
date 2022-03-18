@@ -11,6 +11,9 @@ export const Wrapper = styled.footer`
     height: 80px;
     p {
         margin: 0;
+        @media (max-width: 400px) {
+            font-size: 4vw;
+        }
     }
     a {
         color: var(--white);

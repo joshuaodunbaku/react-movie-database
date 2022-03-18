@@ -18,7 +18,7 @@ import Thumb from './Thumb/Thumb';
 
 const Home = () => {
   const {state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore} = useHomeFetch();
-  if (error) return <div>{`Something Went Wrong ${error}`}</div>
+  if (error) return <div>Something Went Wrong</div>;
   return (
     <>
       {(!searchTerm && state.results[0]) && <HeroImage
