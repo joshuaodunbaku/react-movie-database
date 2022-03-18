@@ -27,21 +27,26 @@ const MovieInfo = ({movie}) => {
                   <div className="rating-directors">
                         <div>
                           <h3>RATING</h3>
-                          <div className="score center">{movie.vote_average}</div>
+                          <div className="score center">
+                              {movie.vote_average}
+                            </div>
                         </div>
                         <div>
-                        <div className="director">
-                            <h3>{movie.directors.length > 1 ? "DIRECTORS" : "DIRECTOR"}</h3>
-                            {movie.directors.map(director => {
-                                return <p key={director.credit_id}>{director.name}</p>
-                            })}
+                            <div className="director">
+                                <h3>{movie.directors.length > 1 ? "DIRECTORS" : "DIRECTOR"}</h3>
+                                {movie.directors.map(director => {
+                                    return <p key={director.credit_id}>{director.name}</p>
+                                })}
+                            </div>
                         </div>
-                      </div>
                         <div>
                             <h3>Casts</h3>
                             <p>{movie.actor.map(actor => {
-                            return (actor.order < 10 && actor.gender <= 2 && `${actor.name}, ` || (actor.order === 10 && `${actor.name}...and more`))
+                            return (actor.order < 10 && actor.gender <= 2 && `${actor.name}, ` || (actor.order === 10 && `${actor.name}.`))
                         })}</p>
+                        </div>
+                        <div>
+                            <span><i>Released Date: {movie.release_date}.</i></span>
                         </div>
                   </div>
               </Text>

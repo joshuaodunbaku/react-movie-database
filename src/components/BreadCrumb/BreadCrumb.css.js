@@ -14,6 +14,13 @@ export const Content = styled.div `
     width: 100%;
     max-width: var(--maxWidth);
     padding: 0 20px;
+    
+    a {
+        color: white;
+    }
+    a:hover {
+        font-weight: bold;
+    }
 
     span {
         font-size: var(--fontMed);
