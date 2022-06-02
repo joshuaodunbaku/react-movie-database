@@ -1,0 +1,15 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    background: linear-gradient(to bottom, #1c1c1c, transparent);
+    transition: all 500ms ease-in-out;
+}
+.navBgDark {
+    background: var(--darkGrey);
+    position: sticky;
+    top: 0;
+}
+.active {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.9);
+}

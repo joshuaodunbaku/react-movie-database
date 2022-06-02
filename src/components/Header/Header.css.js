@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div `
-    background: var(--darkGrey);
+    width: 100%;
     padding: 0 20px;
-    /* height: 150px; */
+    z-index: 999;
 `;
 
 export const Content = styled.div `
     display: flex;
     flex-wrap: wrap;
-    // flex-direction: column;
+    /* // flex-direction: column; */
     align-items: center;
     justify-content: space-between;
     max-width: var(--maxWidth);
@@ -21,7 +21,8 @@ export const Content = styled.div `
 `;
 
 export const LogoImg = styled.img `
-    max-width: 220px;
+    max-width: 240px;
+    /* max-height: 60px; */
     @media (max-width: 500px) {
         width: 100px;
         // margin:auto;
