@@ -28,7 +28,7 @@ export function useHomeFetch() {
 
       setState(prevState => ({
         ...movies,
-        results: page > 1 ? [...prevState.results, ...movies.results] : [...movies.results]
+        results: page >= 1 ? [...prevState.results, ...movies.results] : [...movies.results]
       }));//Prob error
     } catch (error) {
       setError(true);
@@ -48,10 +48,15 @@ export function useHomeFetch() {
         setState(sessionState);
         return;
       }
+    }else if (searchTerm == " ") {
+      setError(true)
+      return alert("Wrong Input");
+
     }
     console.log("Grabbing from API");
     setState(initialState);
     fetchMovies(1, searchTerm);
+    return
   }, [searchTerm]);
 
   // Load More
@@ -65,7 +70,7 @@ export function useHomeFetch() {
 
   // Write to sessionStorage
   useEffect(() => {
-    if(!searchTerm) sessionStorage.setItem("homeState", JSON.stringify(state));
+    if(!searchTerm && state.results.length>1) sessionStorage.setItem("homeState", JSON.stringify(state));
     
   }, [searchTerm, state]);
 
