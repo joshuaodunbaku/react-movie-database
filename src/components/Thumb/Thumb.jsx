@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 // Style
 import { Image } from './Thumb.css'
 
-const Thumb = ({image, movieId, clickable}) => {
+const Thumb = ({image, movieId, clickable, title}) => {
   return (
     <div>
         {clickable ? (
           <Link to={`/${movieId}`}>
-            <Image src={image} alt="movie-thumb" />
+            <Image src={image} alt="movie-thumb" title={title}/>
           </Link>
         ) : (
           <Image src={image} alt="movie-thumb" />

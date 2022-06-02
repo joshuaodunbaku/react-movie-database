@@ -4,6 +4,7 @@ import React from 'react';
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from "../config";
 // Components
 import HeroImage from './HeroImage';
+import PlaceHolder from './HeroImage/PlaceHolder';
 import Grid from './Grid/Grid';
 import { Spinner } from './Spinner/Spinner.css';
 import SearchBar from './SearchBar/SearchBar';
@@ -18,29 +19,37 @@ import Thumb from './Thumb/Thumb';
 
 const Home = () => {
   const {state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore} = useHomeFetch();
-  if (error) return <div>Something Went Wrong</div>;
+  if (error) return (
+    <>
+      <PlaceHolder />
+      <div>Something Went Wrong</div>
+    </>
+  );
   return (
     <>
-      {(!searchTerm && state.results[0]) && <HeroImage
-        image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
-        title={state.results[0].original_title}
-        text={state.results[0].overview} />}
+      {/* Hero Image */}
+      {(!searchTerm && state.results[0]) 
+        ? <HeroImage
+          image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
+          title={state.results[0].original_title}
+          text={state.results[0].overview} /> 
+        : <PlaceHolder />}{/* There was an error on the Home page whenever the <Searchbar/> input field becomes active, the <SearchBar/> goes under the <Header/>. Tried everything I could think of, but to no resolve. Had to manipulate it this way */}
+
         <SearchBar setSearchTerm={setSearchTerm}/>
 
 
         <Grid header={searchTerm ? "Search Result:" : "Popular Movies"}>
           {state.results.map(movie => (
-            <Thumb key={movie.id} clickable image={`${movie.poster_path ? IMAGE_BASE_URL+ POSTER_SIZE + movie.poster_path : NoImage}`} movieId={movie.id} />
+            <Thumb title={movie.title} key={movie.id} clickable image={`${movie.poster_path ? IMAGE_BASE_URL+ POSTER_SIZE + movie.poster_path : NoImage}`} movieId={movie.id} />
           ))}
         </Grid>
         {loading && <Spinner/>}
         {state.page < state.total_pages && !loading && (
           <Button text="Load More" callback={() => setIsLoadingMore(true)}/>
         )}
-        <Footer />
-
+      <Footer />
     </>
   )
 }
 
-export default Home
+export default Home;
