@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { IMAGE_BASE_URL, BACKDROP_SIZE } from "../../config";
 
 export const Wrapper = styled.div`
-    background: ${({backdrop}) => backdrop 
-    ? `url("${IMAGE_BASE_URL}${BACKDROP_SIZE}${backdrop}")` 
+    background: ${({backdrop, poster, browserWidth}) => backdrop 
+    ? `url("${IMAGE_BASE_URL}${BACKDROP_SIZE}${(browserWidth > 768) ? backdrop : poster}")` 
     : "#000000"};
     background-size: cover;
     background-position: center;
@@ -39,19 +39,28 @@ export const Text = styled.div`
     width: 100%;
     padding: 20px 40px;
     color: var(--white);
+    z-index: 1;
 
+    .movie-info {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
     .rating-directors {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+    }
+    .released {
+        margin-top: 20px;
     }
     .score {
         width: 35px;
-        /* height: 35px; */
         background-color: #fff;
         color: #000;
         font-weight: bold;
         border-radius: 50%;
+        border: black 1px solid;
+        box-shadow: 0px 0px 5px white;
     }
     .director {
         margin: 0 0 0 40px;
