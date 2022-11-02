@@ -17,8 +17,8 @@ import { useMovieFetch } from '../Hooks/useMovieFetch';
 // Image
 import NoImage from "../images/no_image.jpg";
 const Movie = () => {
-  const {movieId} = useParams();
-  const {state: movie, loading, error} = useMovieFetch(movieId);
+  const { movieId } = useParams();
+  const { state: movie, loading, error } = useMovieFetch(movieId);
 
   if (loading) return <Spinner />;
   if (error) {
@@ -27,22 +27,22 @@ const Movie = () => {
         <div>Something went Wrong <Link to="/">Home</Link></div>
       </>
     )
-  } ;
-  
+  };
+
   return (
     <>
       <BreadCrumb movieTitle={movie.original_title} />
-      <MovieInfo movie={movie}/>
-      <MovieInfoBar time={movie.runtime} budget={movie.budget} revenue={movie.revenue}/>
+      <MovieInfo movie={movie} />
+      <MovieInfoBar time={movie.runtime} budget={movie.budget} revenue={movie.revenue} />
       <Grid header="Actors">
-        { movie.actor.map((actor) => {
+        {movie.actor.map((actor) => {
           return <Actor key={actor.id} name={actor.name} character={actor.character} imageUrl={
             actor.profile_path
-            ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
-            : NoImage
+              ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
+              : NoImage
           }
-           />
-        }) }
+          />
+        })}
       </Grid>
       <Footer />
     </>

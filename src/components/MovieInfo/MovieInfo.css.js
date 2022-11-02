@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { IMAGE_BASE_URL, BACKDROP_SIZE } from "../../config";
 
 export const Wrapper = styled.div`
-    background: ${({backdrop, poster, browserWidth}) => backdrop 
-    ? `url("${IMAGE_BASE_URL}${BACKDROP_SIZE}${(browserWidth > 768) ? backdrop : poster}")` 
-    : "#000000"};
+    background: ${({ backdrop, poster, browserWidth }) => backdrop
+        ? `url("${IMAGE_BASE_URL}${BACKDROP_SIZE}${(browserWidth > 768) ? backdrop : poster}")`
+        : "#000000"};
     background-size: cover;
     background-position: center;
     animation: animateMovieInfo 1s;
@@ -54,13 +54,16 @@ export const Text = styled.div`
         margin-top: 20px;
     }
     .score {
-        width: 35px;
-        background-color: #fff;
+        /* width: 35px; */
+        /* background-color: #fff; */
         color: #000;
-        font-weight: bold;
-        border-radius: 50%;
-        border: black 1px solid;
-        box-shadow: 0px 0px 5px white;
+        /* font-weight: bold; */
+        padding: 5px;
+        color: white;
+        font-family: elephant, 'Arial Narrow Bold', sans-serif;
+        /* border-radius: 50%;
+        border: #333 1px solid;
+        box-shadow: 0px 0px 5px white; */
     }
     .director {
         margin: 0 0 0 40px;
